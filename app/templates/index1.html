@@ -1,0 +1,25 @@
+{% extends 'bootstrap/base.html' %}
+{% import 'macros.html' as macro %}
+{% block navbar %}
+{% include 'navbar.html'%}
+{% endblock %}
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
+{% endblock %}
+<!-- Content block -->
+  {% block content %}
+
+    <div class="tab-content">
+        <div class="container tab-pane active"><br>
+          {{ macro.display(blogs) }}
+          
+        </div>
+
+    </div> 
+      <div style="margin-top:300px; background-color:rgba(0,0,0,0.8);text-align:center;color:white;height:70px;font-size:18px;padding-top:30px;"><p> &copy;2019 copyright By Emerance </p></div>
+    </div>
+      {% endblock %}

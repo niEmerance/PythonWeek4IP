@@ -1,0 +1,43 @@
+
+{% macro display(blog_list) %}
+<div>
+	{% if blog_list %}
+		{% for blog in blog_list %}
+		<div>
+			
+			<div>
+		     	<h4>{{blog.title}}</h4>
+
+					<p>{{blog.description}}</p>
+
+					
+			
+		    </div>
+
+		</div>
+		{% endfor %}
+	{% else %}
+	{% endif %}
+</div>
+{% endmacro %}
+
+{% macro displayComment(comments) %}
+<div>
+	<ul>
+
+		{% if comments %}
+		{% for comment in comments %}
+			<div>
+					<a><p style="color: black">{{comment.user.username}}:{{ comment.description }}</p></a>
+			</div>
+		{% endfor %}
+		{% else %}
+
+		<h3>No posted comments yet !!</h3>
+		{%endif%}
+
+    </ul>
+</div>
+{% endmacro %}
+			
+
