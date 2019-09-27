@@ -31,7 +31,7 @@ def new_blog():
         
         
         return redirect(url_for('main.index'))
-    return render_template('pitch.html',form=form)
+    return render_template('blog.html',form=form)
 @main.route('/comment/new/<int:blog_id>', methods = ['GET','POST'])
 @login_required
 def new_comment(blog_id):
