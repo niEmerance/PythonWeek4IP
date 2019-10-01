@@ -3,14 +3,14 @@
 <div>
 	{% if blog_list %}
 		{% for blog in blog_list %}
-		<div>
+		<div class="col-md-3">
 			
 			<div>
 		     	<h4>{{blog.title}}</h4>
 
 					<p>{{blog.description}}</p>
 
-					
+					<a href="{{url_for('main.new_comment',blog_id=blog.id)}}" class="btn btn-info">View Comments</a>
 			
 		    </div>
 

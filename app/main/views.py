@@ -25,7 +25,7 @@ def new_blog():
         title = form.title.data
         owner_id = current_user
         print(current_user._get_current_object().id)
-        new_blog = Blog(user_id =current_user._get_current_object().id, title = title,description=description,blog=blog)
+        new_blog = Blog(user_id =current_user._get_current_object().id, title = title,description=description)
         db.session.add(new_blog)
         db.session.commit()
         
@@ -40,14 +40,14 @@ def new_comment(blog_id):
     if form.validate_on_submit():
         description = form.description.data
 
-        new_comment = Comment(description = description, user_id = current_user._get_current_object().id, blog_id = blog_id)
+        new_comment = Comment(description = description, user_id = current_user._get_current_object().id, blog_id = blog.id)
         db.session.add(new_comment)
         db.session.commit()
 
 
-        return redirect(url_for('.new_comment', blog_id= blog_id))
+        return redirect(url_for('.new_comment', blog_id= blog.id))
 
-    all_comments = Comment.query.filter_by(blog_id = blog_id).all()
+    all_comments = Comment.query.filter_by(blog_id = blog.id).all()
     return render_template('comment.html', form = form, comment = all_comments, blog = blog )
 
 @main.route('/user/<uname>')
